@@ -13,6 +13,7 @@ import { fakeBackendProvider } from "./core/helpers/fake-backend";
 import { AppRoutingModule } from "./app.routing";
 import { CommonModule } from "@angular/common";
 import { PageService } from "./shared/services/page.service";
+import { LayoutsModule } from "./layouts/layouts.module";
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -23,6 +24,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
+    LayoutsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
