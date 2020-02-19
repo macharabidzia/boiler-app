@@ -3,9 +3,9 @@ import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
-import { AuthenticationService } from "../../../../access/auth/service/auth.service";
 import { AlertService } from "src/app/core/services/alert/alert.service";
 import { UserService } from "src/app/core/services/user/user.service";
+import { AuthenticationService } from "src/app/core/services/auth/auth.service";
 
 @Component({
   selector: "app-register",

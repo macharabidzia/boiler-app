@@ -8,23 +8,21 @@ import {
 import { AppComponent } from "./app.component";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { AlertComponent } from "./core/components/alert/alert.component";
 import { JwtInterceptor } from "./core/interceptors/auth/jwt.interceptor";
 import { fakeBackendProvider } from "./core/helpers/fake-backend";
 import { AppRoutingModule } from "./app.routing";
 import { CommonModule } from "@angular/common";
-import { AccessModule } from "./access/access.module";
+import { PageService } from "./shared/services/page.service";
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 @NgModule({
-  declarations: [AppComponent, AlertComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
     AppRoutingModule,
-    AccessModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -34,6 +32,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     })
   ],
   providers: [
+    PageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
 
     // provider used to create fake backend

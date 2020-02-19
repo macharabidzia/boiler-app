@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
-import { AuthenticationService } from "src/app/access/auth/service/auth.service";
 import { AlertService } from "src/app/core/services/alert/alert.service";
+import { AuthenticationService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: "app-login",

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
-import { AuthenticationService } from "./access/auth/service/auth.service";
 import { Router } from "@angular/router";
+import { AuthenticationService } from "./core/services/auth/auth.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
