@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-import { AuthenticationService } from "../../services/auth/auth.service";
+import { AuthenticationService } from "../../services";
 @Injectable({
   providedIn: "root"
 })
@@ -9,7 +9,6 @@ export class NoauthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.auth.isAuthenticated()) {
-      console.log("CANT");
       this.router.navigate(["user/profile"]);
       return false;
     }

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "./core/services/auth/auth.service";
+import { TranslateService } from './core/services/translate/translate.service';
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -14,14 +14,9 @@ export class AppComponent {
     public authService: AuthenticationService,
     public router: Router
   ) {
-    translate.addLangs(["en", "fr"]);
-    translate.setDefaultLang("en");
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : "en");
+    console.log(translate.currentLang);
   }
-  ngDoCheck() {
-    console.log("trigger");
-  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(["auth/login"]);

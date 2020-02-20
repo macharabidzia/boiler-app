@@ -1,7 +1,7 @@
 {
-    "HOME": {
-      "TITLE": "Hello Angular with ngx-translate!",
-      "SELECT": "Change language"
-    }
-  }
-  
+  "HOME": {
+    "TITLE": "Hello Angular with ngx-translate!",
+    "SELECT": "Change language"
+  },
+  "HELLO": "Helllo"
+}

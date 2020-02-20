@@ -1,19 +1,7 @@
-<div>
-  <h2>{{ "HOME.TITLE" | translate }}</h2>
-  <label>
-    {{ "HOME.SELECT" | translate }}
-    <select #langSelect (change)="translate.use(langSelect.value)">
-      <option
-        *ngFor="let lang of translate.getLangs()"
-        [value]="lang"
-        [selected]="lang === translate.currentLang"
-        >{{ lang }}</option
-      >
-    </select>
-  </label>
-  <button (click)="logout()">Log Out</button>
-  <a routerLink="home">go to login</a>
+<app-sidenav></app-sidenav>
+<div class="main">
+  {{"HELLO" | translate}}
+  <app-header></app-header>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
 </div>
-<app-header></app-header>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
