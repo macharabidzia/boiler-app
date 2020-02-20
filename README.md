@@ -1,27 +1,30 @@
 # BoilerApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+The App Guide
 
-## Development server
+# Core
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Core Models and Core Services are type of models and services which are implemented for functional part of app
 
-## Code scaffolding
+# Shared
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Shared Models services and etc are global types which go from page to page usage
 
-## Build
+# Feature
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Every feature has its components and service and model for features which are developed only for this feature.
 
-## Running unit tests
+# Config
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Configuration of app
 
-## Running end-to-end tests
+# Layouts
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Layouts which are global types for every pages (header,footer,sidenav).
 
-## Further help
+# Overall Idea
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Shared functionality will be shared throught every page, feature functionality is for certain feature, core functionality is for core management which is provided on app level and every feature can use it(core models and services are for core functionals and can be implemented everywhere) for example (user management, login, register, privilegies).
+every page needs access for User (in most cases) that's why it's provided on app level.
+in idea core is shared, why we need Shared than ?
+Shared provides certain components and functionality which are shared on certain Multi FEATURES! if 2 features want to talk to each other or they use same component or directive or etc, that's where Shared comes in.
