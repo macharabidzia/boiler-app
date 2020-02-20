@@ -16,15 +16,16 @@ Every feature has its components and service and model for features which are de
 
 # Config
 
-Configuration of app
+Configuration of app, (won't need to touch this mostly)
 
 # Layouts
 
 Layouts which are global types for every pages (header,footer,sidenav).
 
-# Overall Idea
 
-Shared functionality will be shared throught every page, feature functionality is for certain feature, core functionality is for core management which is provided on app level and every feature can use it(core models and services are for core functionals and can be implemented everywhere) for example (user management, login, register, privilegies).
-every page needs access for User (in most cases) that's why it's provided on app level.
-in idea core is shared, why we need Shared than ?
-Shared provides certain components and functionality which are shared on certain Multi FEATURES! if 2 features want to talk to each other or they use same component or directive or etc, that's where Shared comes in.
+# Sum up
+Core is Global and implemented on app root level.
+Core provides functionality for our app to work perfectly.
+Shared is Global but implemented for certain features.
+Shared provides components, directives,pipes which are implemented ON MULTIPLE FEATURES.
+Features are Views with feature based components,service and models which are used only for this feature.
