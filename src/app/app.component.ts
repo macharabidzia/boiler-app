@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "./core/services/auth/auth.service";
-import { TranslateService } from './core/services/translate/translate.service';
+import { TranslateService } from "./core/services/translate/translate.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -13,9 +13,7 @@ export class AppComponent {
     public translate: TranslateService,
     public authService: AuthenticationService,
     public router: Router
-  ) {
-    console.log(translate.currentLang);
-  }
+  ) {}
 
   logout() {
     this.authService.logout();

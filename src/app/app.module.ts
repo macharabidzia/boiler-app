@@ -1,7 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, APP_INITIALIZER } from "@angular/core";
 import {
-  HttpClient,
   HttpClientModule,
   HTTP_INTERCEPTORS
 } from "@angular/common/http";
@@ -15,7 +14,6 @@ import {
   fakeBackendProvider,
   JwtInterceptor
 } from "@main/app/boiler/core";
-import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +23,6 @@ import { SharedModule } from "./shared/shared.module";
     HttpClientModule,
     AppRoutingModule,
     LayoutsModule,
-    SharedModule,
     CoreModule.forRoot()
   ],
   providers: [
