@@ -1,5 +1,5 @@
 <div class="sidenav">
-  <a routerLink="login">Login</a>
-  <a routerLink="register">Register</a>
-  <a routerLink="home">Home</a>
+  <a *ngIf="!isLoggedIn" routerLink="login">{{ "LOGIN" | translate }}</a>
+  <a *ngIf="!isLoggedIn" routerLink="register">{{ "REGISTER" | translate }}</a>
+  <a routerLink="home">{{ "HOME" | translate }}</a>
 </div>

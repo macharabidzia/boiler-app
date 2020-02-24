@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ApiServiceBase } from "./api.service.base";
-import { User } from "../../models";
+import { User } from "@main/app/boiler/shared";
 
 @Injectable({
   providedIn: "root"

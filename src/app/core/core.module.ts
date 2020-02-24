@@ -1,8 +1,15 @@
-import { NgModule, ErrorHandler, APP_INITIALIZER } from "@angular/core";
+import {
+  NgModule,
+  ErrorHandler,
+  APP_INITIALIZER,
+  Optional,
+  SkipSelf
+} from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ModuleWithProviders } from "@angular/compiler/src/core";
 import { AuthGuard } from "./guards";
 import { ErrorInterceptor } from "./interceptors";
+import { throwIfAlreadyLoaded } from "./module-import-guard";
 import {
   LoadingService,
   AlertService,
@@ -18,10 +25,12 @@ export function setupTranslateFactory(service: TranslateService): Function {
 }
 
 @NgModule({
-  imports: [HttpClientModule],
-  
+  imports: [HttpClientModule]
 })
 export class CoreModule {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadyLoaded(parentModule, "CoreModule");
+  }
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: CoreModule,

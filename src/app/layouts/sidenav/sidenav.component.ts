@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { UserService, AuthenticationService } from "../../core";
+import { ReplaySubject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-sidenav",
@@ -6,7 +9,23 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./sidenav.component.scss"]
 })
 export class SidenavComponent implements OnInit {
-  constructor() {}
+  public isLoggedIn: boolean = false;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  constructor(private authService: AuthenticationService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.currentUser
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(user => {
+        if (user) {
+          this.isLoggedIn = true;
+        } else {
+          this.isLoggedIn = false;
+        }
+      });
+  }
+  ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
+  }
 }
