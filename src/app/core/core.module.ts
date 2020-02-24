@@ -8,7 +8,7 @@ import {
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ModuleWithProviders } from "@angular/compiler/src/core";
 import { AuthGuard } from "./guards";
-import { ErrorInterceptor } from "./interceptors";
+import { ErrorInterceptor, JwtInterceptor } from "./interceptors";
 import { throwIfAlreadyLoaded } from "./module-import-guard";
 import {
   LoadingService,
@@ -20,6 +20,7 @@ import {
   BaseUrlProviderService,
   TranslateService
 } from "./services";
+import { fakeBackendProvider } from "./helpers";
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use("en");
 }
@@ -54,7 +55,11 @@ export class CoreModule {
           provide: HTTP_INTERCEPTORS,
           useClass: ErrorInterceptor,
           multi: true
-        }
+        },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+
+        // provider used to create fake backend
+        fakeBackendProvider
       ]
     };
   }

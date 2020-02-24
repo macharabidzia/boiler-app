@@ -28,4 +28,7 @@ describe("AppComponent", () => {
       "boiler-app app is running!"
     );
   });
+  it("should call log out serice", () => {
+    
+  });
 });
