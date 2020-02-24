@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { UserService, AuthenticationService } from "../../core";
+import { AuthService } from "../../core";
 import { ReplaySubject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
 
@@ -11,7 +11,7 @@ import { takeUntil } from "rxjs/operators";
 export class SidenavComponent implements OnInit {
   public isLoggedIn: boolean = false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  constructor(private authService: AuthenticationService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.currentUser

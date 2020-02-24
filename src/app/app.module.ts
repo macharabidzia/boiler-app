@@ -15,7 +15,6 @@ import { CoreModule } from "@main/app/boiler/core";
     LayoutsModule,
     CoreModule.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

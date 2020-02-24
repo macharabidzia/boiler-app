@@ -1,4 +1,3 @@
-export * from "./user/user.service";
 export * from "./auth/auth.service";
 export * from "./loading/loading.service";
 export * from "./alert/alert.service";

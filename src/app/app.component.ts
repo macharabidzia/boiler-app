@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthenticationService } from "./core/services/auth/auth.service";
+import { AuthService } from "./core/services/auth/auth.service";
 import { TranslateService } from "./core/services/translate/translate.service";
 @Component({
   selector: "app-root",
@@ -11,7 +11,7 @@ export class AppComponent {
   title = "boiler-app";
   constructor(
     public translate: TranslateService,
-    public authService: AuthenticationService,
+    public authService: AuthService,
     public router: Router
   ) {}
 

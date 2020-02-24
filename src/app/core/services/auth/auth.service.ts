@@ -4,7 +4,7 @@ import { map } from "rxjs/operators";
 import { ApiService } from "../api/api.service";
 import { User } from "@main/app/boiler/shared";
 @Injectable({ providedIn: "root" })
-export class AuthenticationService {
+export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
@@ -51,5 +51,16 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem("currentUser");
     this.currentUserSubject.next(null);
+  }
+  getAll() {
+    return this.api.getAll();
+  }
+
+  register(user: User): Observable<User> {
+    return this.api.register(user);
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.api.delete(`/users/${id}`);
   }
 }

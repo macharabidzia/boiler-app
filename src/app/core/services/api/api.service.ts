@@ -7,10 +7,18 @@ import { User } from "@main/app/boiler/shared";
   providedIn: "root"
 })
 export class ApiService extends ApiServiceBase {
-  //   getUser(): Observable<User> {
-  //     return this.get<User>(`user`);
-  //   }
   getUser(username: string, password: string): Observable<User> {
-    return this.http.post<any>(`/users/authenticate`, { username, password });
+    return this.post<any>(`/users/authenticate`, { username, password });
+  }
+  getAll() {
+    return this.get<User[]>(`/users`);
+  }
+
+  register(user: User): Observable<User> {
+    return this.post<User>(`/users/register`, user);
+  }
+
+  deleteUser(id: number): Observable<any> {
+    return this.delete(`/users/${id}`);
   }
 }

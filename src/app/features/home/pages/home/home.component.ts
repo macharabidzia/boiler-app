@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { first } from "rxjs/operators";
 
-import { UserService } from "src/app/core/services/user/user.service";
-import { AuthenticationService } from "src/app/core/services/auth/auth.service";
+import { AuthService } from "src/app/core/services/auth/auth.service";
 import { User } from "@main/app/boiler/shared";
 @Component({
   selector: "app-home",
@@ -15,10 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentUserSubscription: Subscription;
   users: User[] = [];
 
-  constructor(
-    private authenticationService: AuthenticationService,
-    private userService: UserService
-  ) {
+  constructor(private authenticationService: AuthService) {
     this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
       user => {
         this.currentUser = user;
@@ -36,8 +32,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(id: number) {
-    this.userService
-      .delete(id)
+    this.authenticationService
+      .deleteUser(id)
       .pipe(first())
       .subscribe(() => {
         this.loadAllUsers();
@@ -45,7 +41,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   private loadAllUsers() {
-    this.userService
+    this.authenticationService
       .getAll()
       .pipe(first())
       .subscribe(users => {

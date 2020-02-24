@@ -13,8 +13,7 @@ import { throwIfAlreadyLoaded } from "./module-import-guard";
 import {
   LoadingService,
   AlertService,
-  UserService,
-  AuthenticationService,
+  AuthService,
   ApiService,
   ApiServiceBase,
   BaseUrlProviderService,
@@ -38,7 +37,6 @@ export class CoreModule {
       providers: [
         LoadingService,
         AlertService,
-        UserService,
         ApiService,
         TranslateService,
         {
@@ -50,7 +48,7 @@ export class CoreModule {
         ApiServiceBase,
         BaseUrlProviderService,
         AuthGuard,
-        AuthenticationService,
+        AuthService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: ErrorInterceptor,

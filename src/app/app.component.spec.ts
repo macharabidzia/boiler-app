@@ -1,34 +1,41 @@
-import { TestBed, async } from "@angular/core/testing";
+import { TestBed, async, ComponentFixture } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
+import { CoreModule } from "./core";
+import { BrowserModule } from "@angular/platform-browser";
+import { CommonModule } from "@angular/common";
+import { AppRoutingModule } from "./app.routing";
+import { LayoutsModule } from "./layouts/layouts.module";
 
 describe("AppComponent", () => {
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent]
-    }).compileComponents();
+      declarations: [AppComponent],
+      imports: [
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        CoreModule.forRoot()
+      ]
+    });
+    fixture = TestBed.createComponent(AppComponent);
   }));
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'boiler-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual("boiler-app");
   });
 
   it("should render title", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector(".content span").textContent).toContain(
-      "boiler-app app is running!"
-    );
   });
   it("should call log out serice", () => {
-    
+    // spyOn(fixture.componentInstance, "logout");
+    // expect(fixture.componentInstance.logout).toHaveBeenCalled();
   });
 });
