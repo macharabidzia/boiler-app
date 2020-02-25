@@ -12,7 +12,7 @@ describe("HeaderComponent", () => {
     TestBed.configureTestingModule({
       declarations: [HeaderComponent],
       imports: [HttpClientTestingModule, SharedModule]
-    })
+    }).compileComponents();
   }));
 
   beforeEach(() => {

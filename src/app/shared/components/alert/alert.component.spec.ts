@@ -11,7 +11,7 @@ describe("AlertComponent", () => {
     TestBed.configureTestingModule({
       declarations: [AlertComponent],
       imports: [RouterTestingModule]
-    });
+    }).compileComponents();
   }));
 
   beforeEach(() => {

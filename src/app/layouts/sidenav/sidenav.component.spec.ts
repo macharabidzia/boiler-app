@@ -14,7 +14,7 @@ describe("SidenavComponent", () => {
       declarations: [SidenavComponent],
       imports: [HttpClientTestingModule, SharedModule],
       providers: [LoadingService]
-    });
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -15,9 +15,10 @@ describe("AppComponent", () => {
         BrowserModule,
         CommonModule,
         AppRoutingModule,
-        CoreModule.forRoot()
+        CoreModule.forRoot(),
+        LayoutsModule
       ]
-    });
+    }).compileComponents();
     fixture = TestBed.createComponent(AppComponent);
   }));
 

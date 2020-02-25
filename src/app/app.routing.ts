@@ -8,11 +8,10 @@ export const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "home"
+    redirectTo: "home",
   },
   {
     path: "home",
-    pathMatch: "full",
     canActivate: [AuthGuard],
     loadChildren: () =>
       import("./features/home/home.module").then(mod => mod.HomeModule)
