@@ -18,7 +18,7 @@ describe("AppComponent", () => {
         CoreModule.forRoot(),
         LayoutsModule
       ]
-    }).compileComponents();
+    });
     fixture = TestBed.createComponent(AppComponent);
   }));
 
@@ -30,13 +30,5 @@ describe("AppComponent", () => {
   it(`should have as title 'boiler-app'`, () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual("boiler-app");
-  });
-
-  it("should render title", () => {
-    const compiled = fixture.nativeElement;
-  });
-  it("should call log out serice", () => {
-    // spyOn(fixture.componentInstance, "logout");
-    // expect(fixture.componentInstance.logout).toHaveBeenCalled();
   });
 });

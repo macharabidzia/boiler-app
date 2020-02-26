@@ -12,13 +12,13 @@ export class HeaderComponent implements OnInit {
   constructor(private translateService:TranslateService) {}
   
   ngOnInit(): void {
-    this.setLanguages();
+    // this.setLanguages();
   }
 
-  setLanguages() {
-    // this.languages = [...this.translate.getLangs()];
-  }
-  changeLanguage(lang: string) {
-    // this.translate.use(lang);
-  }
+  // setLanguages() {
+  //   // this.languages = [...this.translate.getLangs()];
+  // }
+  // changeLanguage(lang: string) {
+  //   // this.translate.use(lang);
+  // }
 }

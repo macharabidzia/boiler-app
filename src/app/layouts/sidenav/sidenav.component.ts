@@ -9,8 +9,8 @@ import { takeUntil } from "rxjs/operators";
   styleUrls: ["./sidenav.component.scss"]
 })
 export class SidenavComponent implements OnInit {
-  public isLoggedIn: boolean = false;
-  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  public isLoggedIn: boolean;
+  public destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
