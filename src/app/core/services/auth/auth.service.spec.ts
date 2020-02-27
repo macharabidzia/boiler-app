@@ -8,52 +8,41 @@ import { Observable, of } from "rxjs";
 import { LoadingService } from "../loading/loading.service";
 import { CoreModule } from "../../core.module";
 import { AuthService } from "./auth.service";
+import { User } from "src/app/shared/models";
 describe("AuthService", () => {
-  let mockApiService: any;
   let httpTestingController: HttpTestingController;
-  let service: AuthService;
-  let resultUrl = "api/heroes";
+  let mockAuthservice: jasmine.SpyObj<AuthService>;
   beforeEach(() => {
-    mockApiService = jasmine.createSpyObj(["getUser"]);
+    const authSpy = jasmine.createSpyObj("AuthService", ["login", "logout"]);
+    const apiSpy = jasmine.createSpyObj("ApiService", ["getUser"]);
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, CoreModule],
       providers: [
         AuthService,
         LoadingService,
-        { provide: ApiService, useValue: mockApiService }
+        { provide: AuthService, useValue: authSpy },
+        { provide: ApiService, useValue: apiSpy }
       ]
     });
     httpTestingController = TestBed.get(HttpTestingController);
-    service = TestBed.get(AuthService);
+    mockAuthservice = TestBed.get(AuthService);
   });
-  describe("login", () => {
-    it("should call get with the correct URL", () => {
-      // mockApiService.getUser.and.returnValue(
-      //   of({
-      //     id: 1,
-      //     username: "machara",
-      //     firstName: "giorgi",
-      //     lastName: "matcharashvili",
-      //     token: "fake-jwt-token"
-      //   })
-      // );
-      // service.login("machara", "1234567").subscribe(() => {
-      //   console.log("fullfiled");
-      // });
-      // // service.getHero(3).subscribe(() => {
-      // //   console.log("fullfiled");
-      // // });
-      // const req = httpTestingController.expectOne("users/authenticate");
-      // req.flush(
-      //   of({
-      //     id: 1,
-      //     username: "machara",
-      //     firstName: "giorgi",
-      //     lastName: "matcharashvili",
-      //     token: "fake-jwt-token"
-      //   })
-      // );
-      // httpTestingController.verify();
+  it("should return user on log in", () => {
+    let user: User = {
+      firstName: "giorgi",
+      id: 1,
+      lastName: "Matcharashvili",
+      username: "macharabidzia",
+      token: "auth-token"
+    };
+    mockAuthservice.login.and.returnValue(of(user));
+    mockAuthservice.login("machara", "1235467").subscribe(val => {
+      expect(val).toBe(user);
     });
+  });
+  it("should log out user", () => {
+    spyOn(localStorage, "removeItem");
+    mockAuthservice.logout();
+    expect(localStorage.removeItem).toHaveBeenCalled();
   });
 });
